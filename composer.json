@@ -12,5 +12,18 @@
             "email": "sunchaser@sunchaser.info"
         }
     ],
-    "require": {}
+    "autoload": {
+        "psr-4": {
+            "SunChaser\\Base100\\": "src"
+        }
+    },
+    "bin": [
+        "bin/base100"
+    ],
+    "require": {
+        "php": ">= 7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.0"
+    }
 }
