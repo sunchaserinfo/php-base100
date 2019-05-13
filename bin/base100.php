@@ -34,6 +34,8 @@ base100
 base100 (-d|--decode)
     decode from base100
 HELP;
+
+        exit(1);
 }
 
 $in = fopen('php://stdin', 'r');
