@@ -33,6 +33,26 @@ class Base100
 
     public static function decode(string $encoded): string
     {
-        return '';
+        if (strlen($encoded) % 4 !== 0) {
+            throw new Exception\InvalidLengthException('Encoded data must have length divisible by 4');
+        }
+
+        $first  = chr(self::FIRST);
+        $second = chr(self::SECOND);
+
+        $result = [];
+
+        for ($i = 0; $i < strlen($encoded); $i += 4) {
+            if ($encoded[$i + 0] !== $first || $encoded[$i + 1] !== $second) {
+                throw new Exception\MalformedEmojiException('Malformed emoji in position ' . $i % 4);
+            }
+
+            $byte3 = ord($encoded[$i + 2]);
+            $byte4 = ord($encoded[$i + 3]);
+
+            $result[] = chr(($byte3 - self::THIRD) * self::DIVISOR + $byte4 - self::FOURTH - self::SHIFT);
+        }
+
+        return implode($result);
     }
 }

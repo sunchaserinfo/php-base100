@@ -42,7 +42,7 @@ $out = fopen('php://stdout', 'w');
 while (!feof($in)) {
     $data = fread($in, 1024); // length must be divisible by 4 for decoding
 
-    $encoded = $mode === MODE_ENCODE ? Base100::encode($data) : Base100::decode($data);
+    $encoded = $mode === MODE_ENCODE ? Base100::encode($data) : Base100::decode(rtrim($data, "\n"));
 
     fwrite($out, $encoded);
 }
