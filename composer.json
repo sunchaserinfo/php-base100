@@ -1,7 +1,11 @@
 {
     "name": "sunchaser/base100",
+    "description": "Encode your data into emoji",
+    "keywords": [
+        "base100"
+    ],
     "type": "library",
-    "license": "MIT",
+    "license": "0BSD",
     "authors": [
         {
             "name": "Christian Archer",
